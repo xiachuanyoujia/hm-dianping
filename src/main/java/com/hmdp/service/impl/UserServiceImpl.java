@@ -73,7 +73,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             // 2.如果不符合，返回错误信息
             return Result.fail("手机号格式错误!");
         }
-        // todo 2.从redis获取验证码校验
+        // 2.从redis获取验证码校验
         String cacheCode = stringRedisTemplate.opsForValue().get(LOGIN_CODE_KEY + phone);
         String code = loginForm.getCode();
         if (cacheCode == null || !cacheCode.equals(code)) {
